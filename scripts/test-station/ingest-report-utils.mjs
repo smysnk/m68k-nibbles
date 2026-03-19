@@ -35,6 +35,33 @@ export function createIngestPayload(options = {}) {
   };
 }
 
+export function assertRequiredCiMetadata(source) {
+  if (!source || typeof source !== "object") {
+    throw new Error("source metadata is required");
+  }
+
+  if (source.provider !== "github-actions") {
+    return;
+  }
+
+  const missing = [];
+  if (!trimToNull(source.branch)) {
+    missing.push("branch");
+  }
+  if (!Number.isFinite(source.buildNumber)) {
+    missing.push("buildNumber");
+  }
+
+  if (missing.length === 0) {
+    return;
+  }
+
+  throw new Error(
+    `Missing required GitHub Actions source metadata: ${missing.join(", ")}. `
+      + "Check the workflow env for TEST_STATION_BRANCH / TEST_STATION_BUILD_NUMBER."
+  );
+}
+
 export async function publishIngestPayload(options = {}) {
   const endpoint = requireNonEmptyString(options.endpoint, "endpoint");
   const sharedKey = requireNonEmptyString(options.sharedKey, "sharedKey");

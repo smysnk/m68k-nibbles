@@ -4,7 +4,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { createIngestPayload } from "./ingest-report-utils.mjs";
+import { assertRequiredCiMetadata, createIngestPayload } from "./ingest-report-utils.mjs";
 
 test("createIngestPayload honors explicit Test Station metadata overrides", () => {
   const fixture = createFixtureWorkspace();
@@ -60,6 +60,28 @@ test("createIngestPayload falls back to local git metadata when CI env is absent
   assert.match(payload.source.commitSha || "", /^[0-9a-f]{40}$/);
   assert.equal(payload.source.repository, "smysnk/nibbles68k");
   assert.equal(payload.source.repositoryUrl, "https://github.com/smysnk/nibbles68k");
+});
+
+test("assertRequiredCiMetadata accepts GitHub Actions payloads with branch and build", () => {
+  assert.doesNotThrow(() =>
+    assertRequiredCiMetadata({
+      provider: "github-actions",
+      branch: "main",
+      buildNumber: 88,
+    })
+  );
+});
+
+test("assertRequiredCiMetadata rejects incomplete GitHub Actions payloads", () => {
+  assert.throws(
+    () =>
+      assertRequiredCiMetadata({
+        provider: "github-actions",
+        branch: null,
+        buildNumber: null,
+      }),
+    /Missing required GitHub Actions source metadata: branch, buildNumber/
+  );
 });
 
 function createFixtureWorkspace() {

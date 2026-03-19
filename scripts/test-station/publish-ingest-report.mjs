@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import {
+  assertRequiredCiMetadata,
   createIngestPayload,
   normalizeStorageOptions,
   publishIngestPayload
@@ -33,6 +34,8 @@ async function main() {
       baseUrl: process.env.S3_PUBLIC_URL
     })
   });
+
+  assertRequiredCiMetadata(payload.source);
 
   process.stdout.write(
     `Resolved test-station source: provider=${payload.source.provider || "unknown"} branch=${payload.source.branch || "n/a"} build=${payload.source.buildNumber ?? "n/a"}\n`

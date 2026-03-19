@@ -1,0 +1,14 @@
+{
+  "name": "m68k-nibbles",
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.13.0",
+  "scripts": {
+    "test": "yarn test:station",
+    "test:metadata": "node --test ./scripts/test-station/*.test.mjs",
+    "test:station": "yarn test:metadata && node ./scripts/test-station/run-cli.mjs run --config ./test-station.config.mjs --no-coverage",
+    "test:station:coverage": "yarn test:metadata && node ./scripts/test-station/run-cli.mjs run --config ./test-station.config.mjs --coverage",
+    "test:benchmark:station": "yarn test:metadata && node ./scripts/test-station/run-cli.mjs run --config ./test-station.config.mjs --no-coverage --package benchmark",
+    "test:coverage": "yarn test:station:coverage"
+  }
+}

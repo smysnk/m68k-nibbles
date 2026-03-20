@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import '../load-root-env.mjs';
 import {
   assertRequiredCiMetadata,
   createIngestPayload,

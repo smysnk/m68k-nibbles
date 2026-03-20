@@ -10,5 +10,8 @@
     "test:station:coverage": "yarn test:metadata && node ./scripts/test-station/run-cli.mjs run --config ./test-station.config.mjs --coverage",
     "test:benchmark:station": "yarn test:metadata && node ./scripts/test-station/run-cli.mjs run --config ./test-station.config.mjs --no-coverage --package benchmark",
     "test:coverage": "yarn test:station:coverage"
+  },
+  "devDependencies": {
+    "dotenv": "^16.6.1"
   }
 }

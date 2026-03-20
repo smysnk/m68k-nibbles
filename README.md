@@ -1,8 +1,11 @@
 # m68k-nibbles
 
-[![Testing](https://img.shields.io/badge/testing-test--station-1f6feb?logo=githubactions&logoColor=white)](https://test-station.smysnk.com/projects/m68k-nibbles)
-[![Coverage](https://img.shields.io/badge/coverage-test--station-2ea043?logo=codecov&logoColor=white)](https://test-station.smysnk.com/projects/m68k-nibbles)
+[![tests](https://img.shields.io/endpoint?url=https%3A%2F%2Ftest-station.smysnk.com%2Fapi%2Fbadges%2Ftests.json%3FprojectKey%3Dm68k-nibbles)](https://test-station.smysnk.com/projects/m68k-nibbles)
+[![coverage](https://img.shields.io/endpoint?url=https%3A%2F%2Ftest-station.smysnk.com%2Fapi%2Fbadges%2Fcoverage.json%3FprojectKey%3Dm68k-nibbles)](https://test-station.smysnk.com/projects/m68k-nibbles)
+[![health](https://img.shields.io/endpoint?url=https%3A%2F%2Ftest-station.smysnk.com%2Fapi%2Fbadges%2Fhealth.json%3FprojectKey%3Dm68k-nibbles)](https://test-station.smysnk.com/projects/m68k-nibbles)
 [![npm](https://img.shields.io/badge/npm-unpublished-cb3837?logo=npm&logoColor=white)](package.json)
+
+Report: [Hosted project history](https://test-station.smysnk.com/projects/m68k-nibbles)
 
 Nibbles for the Motorola 68000, with the original `nibbles.asm` source plus a modern terminal-first interpreter and CI/test reporting setup.
 

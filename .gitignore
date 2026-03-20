@@ -3,4 +3,6 @@
 .yarn/install-state.gz
 .test-results/
 node_modules/
+.env
+.env.local
 /references
